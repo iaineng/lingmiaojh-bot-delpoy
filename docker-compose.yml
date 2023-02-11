@@ -24,6 +24,8 @@ services:
     restart: always
     ports:
       - "5620:5620"
+    volumes:
+      - ./logs:/opt/timed-task-caller/logs
   lv-you-lian-meng-lian-bot:
     build:
       context: .
@@ -183,9 +185,8 @@ services:
       - "lin-cheng-jia-yuan-bot"
       - "zhong-qi-shu-ju-lian-meng-bot"
       - "jin-hou-man-zuo-bot"
-      - "zookeeper":
-          condition: service_healthy
       - "sekiro"
+      - "zookeeper"
     volumes:
       - ./logs:/opt/app-backend/.logs
   timed-task-caller:

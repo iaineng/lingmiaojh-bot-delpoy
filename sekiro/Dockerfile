@@ -5,4 +5,4 @@ COPY sekiro/conf /opt/sekiro/conf
 COPY sekiro/lib /opt/sekiro/lib
 COPY deps/tini_static_amd64 /tini
 ENTRYPOINT [ "/tini", "--" ]
-CMD sh /opt/sekiro/sekiro.sh
+CMD sh /opt/sekiro/bin/sekiro.sh
