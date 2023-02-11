@@ -1,0 +1,5 @@
+FROM adoptopenjdk/openjdk8-openj9:x86_64-debian-jre8u345-b01_openj9-0.33.1
+COPY dong-mao-you-pin-bot/dong-mao-you-pin-bot-1.0-SNAPSHOT.jar /opt/dong-mao-you-pin-bot-1.0-SNAPSHOT.jar
+COPY deps/tini_static_amd64 /tini
+ENTRYPOINT [ "/tini", "--" ]
+CMD java -jar /opt/dong-mao-you-pin-bot-1.0-SNAPSHOT.jar
