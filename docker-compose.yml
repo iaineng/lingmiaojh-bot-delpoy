@@ -31,9 +31,6 @@ services:
     restart: always
     ports:
       - "16649:16649"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   hui-jin-sheng-tai-bot:
     build:
       context: .
@@ -41,9 +38,6 @@ services:
     restart: always
     ports:
       - "16650:16650"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   you-yu-shop-bot:
     build:
       context: .
@@ -51,9 +45,6 @@ services:
     restart: always
     ports:
       - "16651:16651"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   ku-you-bot:
     build:
       context: .
@@ -61,9 +52,6 @@ services:
     restart: always
     ports:
       - "16652:16652"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   hi-pin-ji-bot:
     build:
       context: .
@@ -71,9 +59,6 @@ services:
     restart: always
     ports:
       - "16653:16653"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   mei-ri-xiang-cun-bot:
     build:
       context: .
@@ -81,9 +66,6 @@ services:
     restart: always
     ports:
       - "16654:16654"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   qi-cai-ren-sheng-bot:
     build:
       context: .
@@ -91,9 +73,6 @@ services:
     restart: always
     ports:
       - "16655:16655"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   tao-fen-sheng-huo-bot:
     build:
       context: .
@@ -101,9 +80,6 @@ services:
     restart: always
     ports:
       - "16656:16656"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   dian-dian-tiao-dong-bot:
     build:
       context: .
@@ -111,9 +87,6 @@ services:
     restart: always
     ports:
       - "16657:16657"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   guo-tao-xian-sheng-bot:
     build:
       context: .
@@ -121,9 +94,6 @@ services:
     restart: always
     ports:
       - "16658:16658"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   jing-yu-meta-bot:
     build:
       context: .
@@ -131,9 +101,6 @@ services:
     restart: always
     ports:
       - "16659:16659"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   xing-ju-hui-bot:
     build:
       context: .
@@ -141,9 +108,6 @@ services:
     restart: always
     ports:
       - "16660:16660"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   lian-you-bot:
     build:
       context: .
@@ -151,9 +115,6 @@ services:
     restart: always
     ports:
       - "16661:16661"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   dong-mao-you-pin-bot:
     build:
       context: .
@@ -161,9 +122,6 @@ services:
     restart: always
     ports:
       - "16662:16662"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   hong-yi-lv-you-bot:
     build:
       context: .
@@ -171,36 +129,24 @@ services:
     restart: always
     ports:
       - "16663:16663"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   lin-cheng-jia-yuan-bot:
     build:
       context: .
       dockerfile: ./lin-cheng-jia-yuan-bot/Dockerfile
     ports:
       - "16664:16664"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   zhong-qi-shu-ju-lian-meng-bot:
     build:
       context: .
       dockerfile: ./zhong-qi-shu-ju-lian-meng-bot/Dockerfile
     ports:
       - "16665:16665"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   jin-hou-man-zuo-bot:
     build:
       context: .
       dockerfile: ./jin-hou-man-zuo-bot/Dockerfile
     ports:
       - "16666:16666"
-    depends_on:
-      zookeeper:
-        condition: service_healthy
   app-db:
     build:
       context: .
@@ -237,6 +183,9 @@ services:
       - "lin-cheng-jia-yuan-bot"
       - "zhong-qi-shu-ju-lian-meng-bot"
       - "jin-hou-man-zuo-bot"
+      - "zookeeper":
+          condition: service_healthy
+      - "sekiro"
     volumes:
       - ./logs:/opt/app-backend/.logs
   timed-task-caller:
